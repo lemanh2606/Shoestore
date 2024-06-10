@@ -11,6 +11,25 @@
         <link rel="stylesheet" href="css/dataTables.bootstrap5.min.css" />
         <link rel="stylesheet" href="css/Delivery.css" />
         <title>DeliveryDetail</title>
+        <style>
+            .btn-back {
+                background-color: #007bff; 
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin-top: 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .btn-back:hover {
+                background-color: #0056b3; 
+            }
+        </style>
     </head>
     <body>
 
@@ -131,13 +150,14 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <button class="btn-back" onclick="window.history.back()">Back</button>
                         </div>
                     </div>
 
                 </div>
 
             </div>
-
+            
 
         </div>
 
