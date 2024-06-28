@@ -47,7 +47,7 @@
                 <br>
                 <p>
                     <img src="resources/gioithieu.jpg" 
-                         style="display: block; margin-left:100px; margin-right: 100px;">
+                         style="display: block; margin-left: auto; margin-right: auto;">
                 </p>
                 <br>
                 <h2 style="text-align: center;">5 lý do nên mua sản phẩm ở Manh Le</h2>
@@ -59,7 +59,7 @@
                 <br>
                 <p>
                     <img src="resources/gioithieu2.png" 
-                         style="display: block; margin-left: 100px; margin-right: 100px;">
+                         style="display: block; margin-left: auto; margin-right: auto;">
                 </p>
                 <br>
                 <h3 style="text-align: center;">Hệ thống hơn 60 cửa hàng toàn quốc</h3>

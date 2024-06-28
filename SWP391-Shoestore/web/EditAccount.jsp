@@ -112,14 +112,6 @@
                                 <label>Customer</label>
                                 <input type="radio" class="" name="role" value="3" ${role==3?"checked":""} style="height: 10px;">
                             </div>
-                            <div class="form-group">
-                                <label>Marketing</label>
-                                <input type="radio" class="" name="role" value="4" ${role==4?"checked":""} style="height: 10px;">
-                            </div>
-                            <div class="form-group">
-                                <label>Shipper</label>
-                                <input type="radio" class="" name="role" value="5" ${role==5?"checked":""} style="height: 10px;">
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <a type="button" class="btn btn-default" href="AccountManagerControl">Cancel</a>

@@ -67,6 +67,7 @@
         <url-pattern>/LoadPost</url-pattern>
         <url-pattern>/PostControl</url-pattern>
         <url-pattern>/PostDetail</url-pattern>
+       
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -323,10 +324,6 @@
     <servlet>
         <servlet-name>Marketing_EditSale</servlet-name>
         <servlet-class>controller.Marketing_EditSale</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>addAccount</servlet-name>
-        <servlet-class>controller.addAccount</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
@@ -586,10 +583,6 @@
     <servlet-mapping>
         <servlet-name>Marketing_EditSale</servlet-name>
         <url-pattern>/mkt/editsale</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>addAccount</servlet-name>
-        <url-pattern>/addAccount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

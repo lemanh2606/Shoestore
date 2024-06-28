@@ -159,18 +159,13 @@
                 <li class="nav-item d-block d-lg-none">
                     <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
                 </li>
-                <!--                <li class="nav-item dropdown d-block d-lg-none">
-                                    <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/BlogList"" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Blog
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/BlogList">All blog</a></li>                        
-                                    </ul>
-                                </li>-->
-                <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/BlogList" id="navbarDropdown" role="button">
+                <li class="nav-item dropdown d-block d-lg-none">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Blog
                     </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/BlogList">All blog</a></li>                        
+                    </ul>
                 </li>
                 <li class="nav-item d-block d-lg-none">
                     <a class="nav-link" href="#footer">Contacts Us</a>
@@ -265,18 +260,13 @@
             <li class="nav-item me-4">
                 <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/PostControl">Post</a>
             </li>
-            <!--            <li class="nav-item dropdown me-4">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Blog
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/BlogList">All blog</a></li>
-                            </ul>
-                        </li>-->
-            <li class="nav-item me-4">
-                <a class="nav-link" href="${pageContext.request.contextPath}/BlogList" id="navbarDropdown" role="button">
+            <li class="nav-item dropdown me-4">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Blog
                 </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/BlogList">All blog</a></li>
+                </ul>
             </li>
             <li class="nav-item me-4">
                 <a class="nav-link" href="#footer">Contacts Us</a>
