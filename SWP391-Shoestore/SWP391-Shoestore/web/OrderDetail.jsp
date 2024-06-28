@@ -130,7 +130,7 @@
                                             <th scope="col">Product Name</th>
                                             <th scope="col">Unit Price</th>
                                             <th scope="col">Quantity</th>
-                                            <th scope="col">Product IMG</th>
+                                            <th scope="col">Image Product</th>
                                             <th scope="col">Product Price</th>
                                         </tr>
                                     </thead>
@@ -141,15 +141,18 @@
                                                 <td>${o.productName}</td>
                                                 <td>${o.productPrice}</td>
                                                 <td>${o.quantity}</td>
-                                                <c:forEach var="p" items="${listProduct}">
-                                                    <c:if test="${o.productID == p.productID}">
-                                                        <td><img src="./resources/img/${p.url}" alt="" width="120px"></td>
+                                                <td>
+                                                    <c:set var="imageShown" value="false" />
+                                                    <c:forEach var="p" items="${listProduct}">
+                                                        <c:if test="${o.productID == p.productID && imageShown == false}">
+                                                            <img src="./resources/img/products/${p.url}" alt="" width="120px">
+                                                            <c:set var="imageShown" value="true" />
                                                         </c:if>
-
-                                                </c:forEach>
-                                                <td>300$</td>
+                                                    </c:forEach>
+                                                </td>
+                                                <td>${o.productPrice * o.quantity}</td>
                                             </tr>
-
+                                            <c:set var="total" value="${total + (o.productPrice * o.quantity)}" />
                                         </c:forEach>
                                         <tr>
                                             <th scope="row"></th>
@@ -160,7 +163,7 @@
                                                 <p class="fs-4 fw-bold m-0 p-0 text-black">Total</p>
                                             </td>
                                             <td>
-                                                <p class="fs-3 fw-normal m-0 p-0 text-success">${o.totalPrice}</p>
+                                                <p class="fs-3 fw-normal m-0 p-0 text-success">${total}</p>
                                             </td>
 
                                         </tr>

@@ -75,7 +75,10 @@
             Account manager
             <a href="searchAccount"<i class="fa fa-search" aria-hidden="true"></i></a>
         </h2>
-
+        <h3 style="font-family: Brush Script MT; text-align: center; font-size: 60px">
+            <a href="addAccount" class="btn btn-primary btn-lg"><i class="fa fa-plus" aria-hidden="true"></i> Add Account</a>
+        </h3>
+        
         <hr>
 
         <div class="container bootstrap snippets bootdey">
@@ -108,6 +111,12 @@
                                                     </c:if>
                                                     <c:if test="${o.roleID==3}">
                                                         <a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Customer</a>
+                                                    </c:if>
+                                                    <c:if test="${o.roleID==4}">
+                                                        <a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Marketing</a>
+                                                    </c:if>
+                                                    <c:if test="${o.roleID==5}">
+                                                        <a href="#" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Shipper</a>
                                                     </c:if>
                                                 </td>
                                                 <td style="width: 20%;" class="text-center">
