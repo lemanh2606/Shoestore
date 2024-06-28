@@ -9,9 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
-      <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
-
-    <title>Reset Password</title>
+  <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
+    <title>Fotgot Password</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +24,8 @@
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css"/>
 </head>
 
-<body>
+
+<body onload="reloadCaptcha()">
 
 <!-- ***** Preloader Start ***** -->
 <div id="js-preloader" class="js-preloader">
@@ -48,7 +48,7 @@
                 <nav class="main-nav">
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="signin">Sign In</a></li>
+                        <li><a href="signin.jsp">Sign In</a></li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -74,34 +74,15 @@
     <div class="login-wrap p-4 p-md-5 col-lg-4">
         <div class="col-lg-10 mx-auto">
             <div class="card-header text-center p-3 mb-4">
-                <h2 class="m-0">Reset Password</h2>
+                <h2 class="m-0">FORGOT PASSWORD</h2>
             </div>
-            <form action="reset" method="post" id="form">
-                <!-- --------------input field-------------- -->
-                 <div class="form-group mb-4">
-                    <label class="label">Please enter your email</label>
-                    <input type="email" class="form-control" placeholder="email"
-                           required name="email1" id="email">
+            <form action="forgot" method="post" id="form">
+                <!-- ---------------input email---------------- -->
+                <div class="form-group mb-3">
+                    <label class="label">Email</label>
+                    <input type="text" class="form-control" placeholder="Email" required name="email">
                 </div>
-                 <div class="form-group mb-4">
-                    <label class="label">Password</label>
-                    <input type="password" class="form-control" placeholder="Old-Password"
-                           required name="pass1" id="password">
-                </div>
-
-                <div class="form-group mb-4">
-                    <label class="label">New Password</label>
-                    <input type="password" class="form-control" placeholder="New-Password"
-                           required name="new-pass1" id="new-password">
-                </div>
-                <div class="form-group mb-4">
-                    <label class="label">Re- New Password</label>
-                    <input type="password" class="form-control" placeholder="Re-new-password"
-                           required name="repeat-new-pass1" id="repassword">
-                </div>
-                <h6 class="text-danger mb-2" id="message"></h6>
-                <input type="hidden" name="token" value="${token}">
-                <!-- --------------captcha field-------------- -->
+                <!-- ---------------captcha---------------- -->
                 <div class="form-group mb-3">
                     <label class="label">Captcha</label>
                     <div class="d-flex align-content-center">
@@ -116,13 +97,16 @@
                         <input type="text" class="form-control" name="captcha" required placeholder="Enter Captcha"/>
                     </div>
                 </div>
-                <!-- --------------message-------------- -->
+                <!-- ---------------message---------------- -->
                 <h6 class="text-danger mb-2">${error}</h6>
-                <!-- --------------submit button-------------- -->
+                <h6 class="text-success mb-2">${mess}</h6>
+                <!-- ---------------submit button---------------- -->
                 <div class="form-group mb-3 text-center">
-                    <button type="submit" class="col-lg-8 btn btn-primary btn-lg" id="submitBtn">Reset Password</button>
+                    <button type="submit" class="col-lg-5 btn btn-primary btn-lg button-border">SEND TO EMAIL</button>
                 </div>
             </form>
+            <p class="text-center" style="font-size: 15px;">Still remember? <a data-toggle="tab" href="signin.jsp">Sign
+                In Here</a></p>
         </div>
     </div>
 </div>
@@ -141,7 +125,18 @@
 </footer>
 
 <!-- Scripts -->
-<!--<script>
+<script>
+    function reloadCaptcha() {
+        var timestamp = new Date().getTime();
+        var captchaImage = document.getElementById('captchaImage');
+        captchaImage.src = 'generateCaptcha?' + timestamp;
+    }
+
+    function resetCaptcha(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của button (submit form)
+        reloadCaptcha(); // Gọi hàm tạo mới captcha ở đây
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         var form = document.getElementById("form");
         var sendButton = document.querySelector("#form [type=submit]");
@@ -153,22 +148,8 @@
             }
         });
     });
-</script>-->
 
-<!--<script>
-    document.getElementById("submitBtn").addEventListener("click", function(event) {
-        var password = document.getElementById("new-pass").value;
-        var rePassword = document.getElementById("repeat-new-pass").value;
-        var message = document.getElementById("message");
-
-        if (password !== rePassword) {
-            message.innerHTML = "Passwords do not match";
-            event.preventDefault();
-        } else {
-            message.innerHTML = "";
-        }
-    });
-</script>-->
+</script>
 <!-- Bootstrap core JavaScript -->
 
 <script src="vendor/jquery/jquery.min.js"></script>
@@ -177,7 +158,6 @@
 <script src="assets/js/owl-carousel.js"></script>
 <script src="assets/js/counter.js"></script>
 <script src="assets/js/custom.js"></script>
-
 
 </body>
 

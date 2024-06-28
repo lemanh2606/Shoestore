@@ -63,7 +63,7 @@
 
                             <div class="form-group">
                                 <label>Content</label>
-                                <textarea name="blog-text" class="form-control" id="blog-text" rows="7">${content}</textarea>
+                                <textarea name="content" class="form-control" id="blog-text" rows="7">${content}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Image Link</label>
@@ -71,7 +71,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Image </label>
-                                <center><img src="./resources/img/Blog/${imageLink}" style="height: 200px; margin: 20px; "></center>
+                                                                <input type="file" src="./resources/img/Blog/${imageLink}"  enctype="multipart/form-data" name="imglink" class="form-control" required></input>
+
                             </div>
                             <div class="form-group">
                                 <label>Author</label>

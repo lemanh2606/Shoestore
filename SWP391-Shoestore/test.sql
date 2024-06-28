@@ -830,3 +830,12 @@ FOREIGN KEY (ShipInfoID) REFERENCES dbo.ShipInfo(ID),
 FOREIGN KEY (UserID) REFERENCES dbo.Users(UserID),
 );
 go
+CREATE TABLE tokenForgetPassword (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    token VARCHAR(255) NOT NULL,
+    expiryTime DATETIME NOT NULL,
+    isUsed BIT NOT NULL,
+    UserID INT NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES [Users](UserID)
+);
+go

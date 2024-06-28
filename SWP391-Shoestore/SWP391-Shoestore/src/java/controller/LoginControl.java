@@ -16,7 +16,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.HashMap;
 
-
+/**
+ *
+ * @author Admin
+ */
 public class LoginControl extends HttpServlet {
 
     /**
@@ -39,29 +42,33 @@ public class LoginControl extends HttpServlet {
         //Kết nối vs DB
          HashMap<String, String> parameter = getParameter(request, response);
         //-----------------verify captcha-----------------
-        if (!isTrueCaptcha(request, response, parameter)) {
+        
+        LoginDAO dao = new LoginDAO();
+        Users u = dao.login(username, password);
+         if (u == null) {
+            //login fail -> Đẩy về trang Login.jsp (nhập lại)
+            //Message thông báo Login sai: thay đổi giá trị của biến mess
+            request.setAttribute("error", "Your username or password is incorrect, please re-enter!");
+            //ko thì quay trở lại trang login.jsp
+            //Yêu cầu người dùng Login lại
+            request.getRequestDispatcher("signin.jsp").forward(request, response);
+        } else if (!isTrueCaptcha(request, response, parameter)) {
             request.setAttribute("error", "Captcha is not correct! Try again!");
             request.getRequestDispatcher("signin.jsp").forward(request, response);
             return;
             
-        }
-        LoginDAO dao = new LoginDAO();
-        Users u = dao.login(username, password);
-        
+        } else   
         //Kiểm tra
-       
-        if (u == null) {
-            //login fail -> Đẩy về trang Login.jsp (nhập lại)
-            //Message thông báo Login sai: thay đổi giá trị của biến mess
-//            request.setAttribute("mess1", "Login fail!");
-            //ko thì quay trở lại trang login.jsp
-            //Yêu cầu người dùng Login lại
-            request.getRequestDispatcher("signin.jsp").forward(request, response);
-        } else {
+        {
             HttpSession session = request.getSession();
             session.setAttribute("user", u);
             response.sendRedirect(request.getContextPath() + "/home");
         }
+       
+        
+        
+       
+      
 
         request.getRequestDispatcher("signin.jsp").forward(request, response);
     }

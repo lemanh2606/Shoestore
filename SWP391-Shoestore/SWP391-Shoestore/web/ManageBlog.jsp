@@ -79,7 +79,7 @@
                                     <h2>Manage Blog</h2>
                                 </div>
                                 <div class="col-sm-2">                                
-                                    <a type="button"  href="AddBlog" class="btn btn-success" ><span>Add New Blog</span></a>
+                                    <a type="button"  href="AddBlog.jsp" class="btn btn-success" ><span>Add New Blog</span></a>
                                 </div>
                             </div>
                         </div>

@@ -5,17 +5,18 @@
  */
 package entity;
 
-
 public class Users {
 
-    //Chỉnh sửa lại thuộc tính: LAMDTHE153097
     int userID;
     String userName;
     String password;
     String email;
     int roleID;
     int statusID;
-   
+    private Boolean isActive;
+    private byte[] secretKey;
+
+    private Boolean isSigninWithGoogle;
 
     public Users(int userID, String userName, String password, String email, int roleID, int statusID) {
         this.userID = userID;
@@ -26,19 +27,68 @@ public class Users {
         this.statusID = statusID;
     }
 
+    public Users(int userID, String userName, String password, String email) {
+        this.userID = userID;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+    }
+
     public Users(String userName, String password, String email) {
         this.userName = userName;
         this.password = password;
         this.email = email;
     }
- 
+
+    public Users(int userID, String userName, String password, String email, int roleID, int statusID, Boolean isActive, byte[] secretKey, Boolean isSigninWithGoogle) {
+        this.userID = userID;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.roleID = roleID;
+        this.statusID = statusID;
+        this.isActive = isActive;
+        this.secretKey = secretKey;
+        this.isSigninWithGoogle = isSigninWithGoogle;
+    }
+
+    public Users(int userID, String userName, String password, String email, int roleID, int statusID, Boolean isActive, byte[] secretKey) {
+        this.userID = userID;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.roleID = roleID;
+        this.statusID = statusID;
+        this.isActive = isActive;
+        this.secretKey = secretKey;
+    }
 
     public Users() {
     }
 
- 
-  
-   
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public byte[] getSecretKey() {
+        return secretKey;
+    }
+
+    public void setSecretKey(byte[] secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public Boolean getIsSigninWithGoogle() {
+        return isSigninWithGoogle;
+    }
+
+    public void setIsSigninWithGoogle(Boolean isSigninWithGoogle) {
+        this.isSigninWithGoogle = isSigninWithGoogle;
+    }
 
     public int getUserID() {
         return userID;

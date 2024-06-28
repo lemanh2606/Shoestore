@@ -250,8 +250,12 @@ public class ProductDAO extends DBcontext{
     }
 
     public void deleteProduct(String pid) {
-        String query = "delete from ProductImg where ProductID = ? "
-                + "delete from Product where ProductID = ?";
+        String query = "DELETE FROM dbo.Cart WHERE ProductID = ?\n"
+                 + "DELETE FROM dbo.Feedback_Replies WHERE [FeedbackID] IN (SELECT [ID] FROM [dbo].[Feedback] WHERE [ProductID] = ?)\n"
+                 + "DELETE FROM [dbo].[Feedback] WHERE [ProductID] = ?\n"
+                 + "DELETE FROM [dbo].[ProductImg] WHERE [ProductID] = ?\n"
+                 + "DELETE FROM [dbo].[Order_Detail] WHERE [ProductID] = ?\n"
+                 + "DELETE FROM [dbo].[Product] WHERE [ProductID] = ?";
 
         try {
           
@@ -260,7 +264,7 @@ public class ProductDAO extends DBcontext{
             ps.setString(2, pid);
             ps.executeUpdate();
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
     }
 
@@ -333,7 +337,8 @@ public class ProductDAO extends DBcontext{
 
             ps.executeUpdate();
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            
         }
     }
 

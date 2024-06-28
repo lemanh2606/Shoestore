@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
               rel="stylesheet">
-
+  <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
         <title>Sign up</title>
 
         <!-- Bootstrap core CSS -->
@@ -78,11 +78,7 @@
                     </div>
                     <form action="register" method="post" name="signup" id="RegForm">
                         <!-- ---------------input---------------- -->
-                        <div class="form-group mb-3">
-                            <label class="label">Fullname</label>
-                            <input type="text" class="form-control" placeholder="Fullname"
-                                   required name="fullname">
-                        </div>
+                        
                         <div class="form-group mb-3">
                             <label class="label">Email</label>
                             <input type="email" class="form-control" placeholder="Email"
@@ -116,7 +112,7 @@
                                 <button class="btn input-group-prepend" onclick="resetCaptcha(event)">
                                     <i class="fa fa-refresh"></i>
                                 </button>
-                                <input type="text" class="form-control" name="captcha" required placeholder="Enter Captcha"/>
+                                <input type="text" class="form-control" name="captcha1" required placeholder="Enter Captcha"/>
                             </div>
                         </div>
                         <!-- ---------------error---------------- -->

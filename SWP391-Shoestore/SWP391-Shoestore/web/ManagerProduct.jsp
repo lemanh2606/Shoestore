@@ -63,9 +63,9 @@
 
                                 <td>
                                     <!---Edit---->
-                                    <a href="LoadProduct?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="LoadProduct?pid=${o.productID}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                     <!----Delete----> 
-                                    <a href="delete?pid=${o.productID}" onclick="return confirm('Are you sure you want to delete these Product?');" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="delete?pid=${o.productID}" onclick="return confirm('Are you sure you want to delete these Product?');" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -107,20 +107,20 @@
                             </div>
                             <div class="form-group">
                                 <label>OriginalPrice</label>
-                                <textarea name="OriginalPrice" class="form-control" required></textarea>
+                                <input type="number" name="OriginalPrice" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>SellPrice</label>
-                                <textarea name="SellPrice" class="form-control" required></textarea>
+                                <input type="number" name="SellPrice" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>SalePercent</label>
-                                <input name="SalePercent" type="text" class="form-control" required>
+                                <input name="SalePercent" type="number" class="form-control" required>
                             </div>
                             
                             <div class="form-group">
                                 <label>Amount</label>
-                                <textarea name="Amount" class="form-control" required></textarea>
+                                <input type="number" name="Amount" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>StatusID</label>
@@ -132,19 +132,19 @@
                             </div>
                             <div class="form-group">
                                 <label>height</label>
-                                <textarea name="height" class="form-control" required></textarea>
+                                <input type="number" name="height" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>width</label>
-                                <textarea name="width" class="form-control" required></textarea>
+                                <input type="number" name="width" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>weight</label>
-                                <textarea name="weight" class="form-control" required></textarea>
+                                <input type="number" name="weight" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
-                                <input type="file" name="ProductImgURL" class="form-control" required></input>
+                                <input type="file" enctype="multipart/form-data" name="ProductImgURL" class="form-control" required></input>
                             </div>
                            <div class="form-group">
                                     <label>Category</label>

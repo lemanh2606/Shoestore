@@ -86,7 +86,8 @@
                         </div>
                         <div class="form-group">
                             <label>Image Link</label>
-                            <input type="text" class="form-control" required name="imageLink">
+                            <input type="file"   enctype="multipart/form-data" name="imageLink" class="form-control" required></input>
+
                         </div>                            
                     </div>
                     <div class="modal-footer">

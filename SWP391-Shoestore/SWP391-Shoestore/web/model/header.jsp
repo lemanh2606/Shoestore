@@ -123,7 +123,7 @@
                             </c:if>
                         <!-- Neu khong co user -->
                         <c:if test ="${sessionScope.user ==  null}">
-                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login/Register</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/signin.jsp">Login/Register</a></li>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/AboutShope.jsp">About Manh Le</a></li>
                             </c:if>
                     </ul>
@@ -214,7 +214,7 @@
                 </c:if>
                 <c:if test ="${sessionScope.user ==  null}">
                     <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/login">Login/Register</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/signin.">Login/Register</a>
                     </li>
                 </c:if>
             </ul>
@@ -309,7 +309,7 @@
                     <p class="card-text">Join us to start receiving notification about your order, comment, promos, and more</p>  
                 </div>
                 <div class="card-footer">
-                    <a class="text-decoration-none" href="${pageContext.request.contextPath}/login"><small class="text-white">Login/Register</small></a>
+                    <a class="text-decoration-none" href="${pageContext.request.contextPath}/signin.jsp"><small class="text-white">Login/Register</small></a>
                 </div>
             </div>
         </c:if>

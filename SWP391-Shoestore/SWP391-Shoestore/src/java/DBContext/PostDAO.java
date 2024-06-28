@@ -21,7 +21,7 @@ public class PostDAO extends DBcontext{
         ArrayList<Post> postList = new ArrayList<>();
         try {
 
-            String query = "select * from P  conn = new DBcontext().open();ost  ";
+            String query = "select * from Post ";
            
           PreparedStatement  ps = connection.prepareStatement(query);
            ResultSet rs = ps.executeQuery();
@@ -34,8 +34,7 @@ public class PostDAO extends DBcontext{
         return postList;
     }
    public void deletePost(String postid) {
-        String query = 
-                "delete from Post where ID = ?";
+        String query = "delete from Post where ID = ?";
 
         try {
            

@@ -15,7 +15,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
+/**
+ *
+ * @author LAMDTHE153097
+ */
 public class changepass extends HttpServlet {
 
     /**
@@ -71,8 +74,27 @@ public class changepass extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            
             HttpSession session = request.getSession();
             Users user = (Users) session.getAttribute("user");
+//            UserDAO u = new UserDAO();
+//            String mail = request.getParameter("email");
+//           Users user2 = u.getUserByEmail(mail);
+//            
+//            if(user2 != null){
+//                 String oldPassword = request.getParameter("pass");
+//                String newPassword = request.getParameter("new-pass");
+//                String repeatNewPassword = request.getParameter("repeat-new-pass");
+//               if (user2.getPassword().equals(oldPassword)
+//                        && newPassword.equals(repeatNewPassword)) {
+//                    u.updatePassword(user2.getUserID(), newPassword);
+//                    request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
+//                } else {
+//                    request.getRequestDispatcher("signin.jsp").forward(request, response);
+//                } 
+//            }else {
+//                response.sendRedirect("error.jsp");
+//            }
             if (user != null) {
                 String oldPassword = request.getParameter("pass");
                 String newPassword = request.getParameter("new-pass");

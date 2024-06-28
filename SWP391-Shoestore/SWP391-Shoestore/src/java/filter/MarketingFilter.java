@@ -117,7 +117,7 @@ public class MarketingFilter implements Filter {
                 else
                     res.sendRedirect(req.getContextPath()+"/home");
             else 
-                res.sendRedirect(req.getContextPath()+"/login");
+                res.sendRedirect(req.getContextPath()+"/signin.jsp");
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then

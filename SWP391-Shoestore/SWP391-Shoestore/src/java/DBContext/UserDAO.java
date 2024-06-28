@@ -14,7 +14,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.Factory;
 
-
+/**
+ *
+ * @author LAMDTHE153097
+ */
 public class UserDAO extends DBcontext{
 
    
@@ -54,7 +57,7 @@ public class UserDAO extends DBcontext{
     }
 
     public Users getUsersByEmail(String userEmail) {
-        String query = "select * from Users where email = ?";
+        String query = "select * from Users where email = '?'";
         try {
           
           PreparedStatement  ps = connection.prepareStatement(query);
@@ -72,7 +75,7 @@ public class UserDAO extends DBcontext{
     }
 
     public Users getUserByUsername(String userName) {
-        String query = "select * from Users where Username = ?";
+        String query = "select * from Users where Username = '?'";
         try {
          
            PreparedStatement ps = connection.prepareStatement(query);
@@ -351,6 +354,85 @@ public class UserDAO extends DBcontext{
         return user;
     }
 
-  
+   public void updateUser(Users userUpdate) {
+        Transaction transaction = null;
+        try (Session session = Factory.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
 
+            session.update(userUpdate);
+            transaction.commit();
+        } catch (Exception ex) {
+            if (transaction == null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+    }
+   
+   
+       public Users getUserByEmail(String email) {
+        String sql = "Select * from [Users] where email = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {                
+                return new Users(
+                        rs.getInt(1),
+                        rs.getString(2), 
+                        rs.getString(3), 
+                        rs.getString(4));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    public Users getUserById(int userId) {
+        String sql = "Select * from [User] where id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {                
+                return new Users(
+                        rs.getInt(1),
+                        rs.getString(2), 
+                        rs.getString(3), 
+                        rs.getString(4));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public void updatePassword(String email, String password) {
+        String sql = "UPDATE [dbo].[users]\n"
+                + "   SET [password] = ?\n"
+                + " WHERE [email] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, password);
+            st.setString(2, email);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+public void insertUser(Users User) {
+        Transaction transaction = null;
+        try (Session session = Factory.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            session.saveOrUpdate(User);
+
+            transaction.commit();
+        } catch (Exception ex) {
+            if (transaction == null) {
+                transaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+    }
 }

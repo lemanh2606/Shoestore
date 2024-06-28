@@ -68,7 +68,7 @@ public class CustomerFilter implements Filter {
                 chain.doFilter(request, response);
             }
         } catch (IOException | ServletException t) {
-            httpResponse.sendRedirect("login");
+            httpResponse.sendRedirect("signin.jsp");
         }
 
     }

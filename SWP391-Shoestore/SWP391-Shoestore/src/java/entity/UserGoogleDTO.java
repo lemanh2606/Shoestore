@@ -1,6 +1,7 @@
 package entity;
 
 public class UserGoogleDTO {
+
     private String id;
     private String email;
     private boolean verified_email;
@@ -80,15 +81,15 @@ public class UserGoogleDTO {
 
     @Override
     public String toString() {
-        return "UserGoogleDTO{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                ", verified_email=" + verified_email +
-                ", name='" + name + '\'' +
-                ", given_name='" + given_name + '\'' +
-                ", family_name='" + family_name + '\'' +
-                ", picture='" + picture + '\'' +
-                '}';
+        return "UserGoogleDTO{"
+                + "id='" + id + '\''
+                + ", email='" + email + '\''
+                + ", verified_email=" + verified_email
+                + ", name='" + name + '\''
+                + ", given_name='" + given_name + '\''
+                + ", family_name='" + family_name + '\''
+                + ", picture='" + picture + '\''
+                + '}';
     }
 
 }

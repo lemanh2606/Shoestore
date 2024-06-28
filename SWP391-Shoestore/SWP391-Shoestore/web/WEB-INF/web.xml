@@ -33,6 +33,13 @@
         <url-pattern>/seller/*</url-pattern>
         <url-pattern>/ManageFeedbackBySeller</url-pattern>
         <url-pattern>/ReplyFeedback</url-pattern>
+        <url-pattern>/AddBlog</url-pattern>
+        <url-pattern>/UpdateBlog</url-pattern>
+        <url-pattern>/DeleteBlog</url-pattern>
+        <url-pattern>/delete</url-pattern>
+        <url-pattern>/AddProduct</url-pattern>
+        <url-pattern>/EditProductControl</url-pattern>
+        <url-pattern>/LoadProduct</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>UserFilter</filter-name>
@@ -55,18 +62,12 @@
         <url-pattern>/editAccount</url-pattern>
         <url-pattern>/deleteAccount</url-pattern>
         <url-pattern>/AddPost</url-pattern>
-        <url-pattern>/AddProduct</url-pattern>
-        <url-pattern>/delete</url-pattern>
         <url-pattern>/DeletePost</url-pattern>
         <url-pattern>/EditPost</url-pattern>
-        <url-pattern>/EditProductControl</url-pattern>
-        <url-pattern>/LoadProduct</url-pattern>
         <url-pattern>/LoadPost</url-pattern>
         <url-pattern>/PostControl</url-pattern>
         <url-pattern>/PostDetail</url-pattern>
-        <url-pattern>/AddBlog</url-pattern>
-        <url-pattern>/UpdateBlog</url-pattern>
-        <url-pattern>/DeleteBlog</url-pattern>
+       
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
