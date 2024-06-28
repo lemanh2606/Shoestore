@@ -6,7 +6,6 @@
 package controller;
 
 import DBContext.OrderDAO;
-import DBContext.ProductDAO;
 import DBContext.ShipDAO;
 import DBContext.UserDAO;
 import entity.Order;
@@ -65,7 +64,6 @@ public class DeliveryDashboard extends HttpServlet {
             throws ServletException, IOException {
         OrderDAO odao = new OrderDAO();
         UserDAO udao = new UserDAO();
-        ProductDAO pdao = new ProductDAO();
         ShipDAO sdao = new ShipDAO();
         HttpSession ss = request.getSession();
         try {
