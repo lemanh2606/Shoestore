@@ -22,7 +22,7 @@
 
                 <div class="sidebar-header">
 
-                    <h3>Shope</h3>
+                    <h3>Manh Le</h3>
                 </div>
 
                 <ul class="list-unstyled components">

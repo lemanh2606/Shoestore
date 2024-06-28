@@ -28,9 +28,8 @@
         <!--ICON-->
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
-    <body>
-
-        <header>
+<body>
+    <header>
             <div class="row m-0 p-0">
                 <span id="promo" class="d-lg-block d-none">
                     <marquee style="width: 100%" behavior="scroll" direction="left"><i>Get 10% SALE by using special discount code "CHEERSLUV"</i></marquee>
@@ -72,66 +71,44 @@
                 </div>
             </nav>
         </header>
-
-        <div id="editEmployeeModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <form action="editAccount" method="POST">
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Edit Account</h4>
-                            <a type="button" class="close" href="AccountManagerControl" aria-hidden="true">&times;</a>                                                         
-                        </div>
-                        <div class="modal-body">	
-                            <div class="form-group">
-                                <label>ID</label>
-                                <input type="text"  class="form-control" name="id" value="${id}" readonly>
-                                <span class="show-btn"><i class="fas-fa-eye"></i></span>
-                            </div>
-                            <div class="form-group">
-                                <label>UserName</label>
-                                <input type="text" class="form-control" required name="user" value="${user}">
-                            </div>
-                            <div class="form-group">
-                                Password: <input type="password" value="${pass}" id="myInput" class="form-control">
-                                <input type="checkbox" onclick="myFunction()"><i>Show Password</i>
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" required name="email" value="${email}">
-                            </div>
-                            <div class="form-group">
-                                <label>Admin</label>
-                                <input type="radio" class="" name="role" value="1" ${role==1?"checked":""} style="height: 10px;">
-                            </div>
-                            <div class="form-group">
-                                <label>Seller</label>
-                                <input type="radio" class="" name="role" value="2" ${role==2?"checked":""} style="height: 10px;">
-                            </div>
-                            <div class="form-group">
-                                <label>Customer</label>
-                                <input type="radio" class="" name="role" value="3" ${role==3?"checked":""} style="height: 10px;">
-                            </div>
-                            <div class="form-group">
-                                <label>Marketing</label>
-                                <input type="radio" class="" name="role" value="4" ${role==4?"checked":""} style="height: 10px;">
-                            </div>
-                            <div class="form-group">
-                                <label>Shipper</label>
-                                <input type="radio" class="" name="role" value="5" ${role==5?"checked":""} style="height: 10px;">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a type="button" class="btn btn-default" href="AccountManagerControl">Cancel</a>
-                            <input type="submit" class="btn btn-info" value="Save">
-                        </div>
-                    </form>
-
-                </div>
+    <div class="container mt-5">
+        <h2>Add New Account</h2>
+        <form action="addAccount" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
             </div>
-        </div>
-
-        <footer class="text-white text-center text-lg-start" style="background-color: #23242a;" id="part-1">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="roleID">Role</label>
+                <select class="form-control" id="roleID" name="roleID">
+                    <option value="1">Admin</option>
+                    <option value="2">Seller</option>
+                    <option value="3">Customer</option>
+                    <option value="4">Marketing</option>
+                    <option value="5">Shipper</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="statusID">Status</label>
+                <select class="form-control" id="statusID" name="statusID">
+                    <option value="1">Active</option>
+                    <option value="2">Locked</option>
+                    <option value="3">Gmail Login</option>
+                    <option value="4">Unverified</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Account</button>
+        </form>
+    </div>
+                        <footer class="text-white text-center text-lg-start" style="background-color: #23242a;" id="part-1">
             <!-- Section: Social media -->
             <section
                 class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
@@ -267,16 +244,6 @@
             </div>
             <!-- Copyright -->
         </footer>
-
-        <script>
-            function myFunction() {
-                var x = document.getElementById("myInput");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }
-        </script>
-    </body>
+</body>
 </html>
+
