@@ -8,6 +8,7 @@ package controller;
 import DBContext.FeedbackDAO;
 import DBContext.ProductDAO;
 import DBContext.ProductDetailDAO;
+import entity.Feedback;
 import entity.ProductDetail;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -68,7 +69,25 @@ public class DetailControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+
+        // Lấy thông tin từ form
+        String review = request.getParameter("review");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+        int productID = Integer.parseInt(request.getParameter("pid"));
+
+        // Tạo đối tượng Feedback
+        Feedback feedback = new Feedback();
+        feedback.setProductID(productID);
+        feedback.setStar(rating);
+        feedback.setFeedbackDetail(review);
+
+        // Lưu feedback vào database
+        FeedbackDAO feedbackDAO = new FeedbackDAO();
+        feedbackDAO.addFeedback(feedback);
+
+        // Redirect về trang chi tiết sản phẩm
+        response.sendRedirect("detail?pid=" + productID);
     }
 
     /**

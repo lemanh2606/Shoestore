@@ -237,17 +237,15 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
      * @return true if add successful, else false
      */
     public void addFeedback(Feedback feedback) {
-        String query = "INSERT INTO Feedback VALUES (?, ?, ?, ?, ?);";     
+        String query = "INSERT INTO Feedback (ProductID, Star, FeedbackDetail) VALUES (?, ?, ?);";   
         try {
           
          PreparedStatement   ps = connection.prepareStatement(query);
            
             //Set data to the "?"
-            ps.setInt(1, feedback.getUserID());
-            ps.setInt(2, feedback.getProductID());
-            ps.setInt(3, feedback.getOrderID());
-            ps.setInt(4, feedback.getStar());
-            ps.setString(5, feedback.getFeedbackDetail());
+              ps.setInt(1, feedback.getProductID());
+            ps.setInt(2, feedback.getStar());
+            ps.setString(3, feedback.getFeedbackDetail());
             ps.executeUpdate();
         } catch (Exception e) {
 
