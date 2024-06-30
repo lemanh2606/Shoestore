@@ -97,7 +97,7 @@ public class ShipDAO extends DBcontext{
     }
 
     public void addJob(int jid, int userID) {
-        String query = "insert Delivery values ( ? , ? , 2 )";
+        String query = "insert into Delivery values ( ? , ? , 2 )";
         try {
            
            PreparedStatement ps = connection.prepareStatement(query);
@@ -147,10 +147,10 @@ public class ShipDAO extends DBcontext{
         String query = "";
         switch (action) {
             case "Accomplished":
-                query = "update Delivery set Status = 1 where ShipInfoID = ? ";
+                query = "update Delivery set Status = 1 where ID = ? ";
                 break;
-            case "Delivery failed":
-                query = "update Delivery set Status = 3 where ShipInfoID =  ? ";
+            case "Take":
+                query = "update Delivery set Status = 3 where ID =  ? ";
                 break;
         }
 
@@ -164,7 +164,7 @@ public class ShipDAO extends DBcontext{
     }
 
     public ArrayList<Delivery> getJobByShipper(int userID) {
-        String query = "select * From delivery \n"
+        String query = "select * From Delivery \n"
                 + "                where UserID = ? ";
         ArrayList<Delivery> list = new ArrayList<>();
         try {

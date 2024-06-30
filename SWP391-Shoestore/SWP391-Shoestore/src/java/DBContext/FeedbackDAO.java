@@ -9,6 +9,7 @@ import entity.Feedback;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -237,17 +238,15 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
      * @return true if add successful, else false
      */
     public void addFeedback(Feedback feedback) {
-        String query = "INSERT INTO Feedback VALUES (?, ?, ?, ?, ?);";     
+        String query = "INSERT INTO Feedback (ProductID, Star, FeedbackDetail) VALUES (?, ?, ?);";   
         try {
           
          PreparedStatement   ps = connection.prepareStatement(query);
            
             //Set data to the "?"
-            ps.setInt(1, feedback.getUserID());
-            ps.setInt(2, feedback.getProductID());
-            ps.setInt(3, feedback.getOrderID());
-            ps.setInt(4, feedback.getStar());
-            ps.setString(5, feedback.getFeedbackDetail());
+              ps.setInt(1, feedback.getProductID());
+            ps.setInt(2, feedback.getStar());
+            ps.setString(3, feedback.getFeedbackDetail());
             ps.executeUpdate();
         } catch (Exception e) {
 
@@ -288,6 +287,18 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
      */
     public int countTotalFeedback() {
         return getAllFeedbacks().size();
+    }
+    
+    public void delete(int id) {
+        String query = "DELETE FROM dbo.Feedback_Replies WHERE [FeedbackID] IN (SELECT [ID] FROM [dbo].[Feedback])\n"
+                + "Delete FROM Feedback WHERE ID = ?";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
     }
 
 }

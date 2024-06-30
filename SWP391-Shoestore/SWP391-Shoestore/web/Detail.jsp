@@ -150,19 +150,20 @@
                                             </div>
 
                                         </div>                                          
-                                        <a href="user/addtocart?id=${detail.productID}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                            Add to cart
-                                        </a>
-                                       
-                                    </div>                                           
+
+
+                                    </div>   
 
                                 </div>	
                             </div>
+                            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
 
-                                        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 "> <a href="Chat?friendId=${detail.sellerID}" style="color: white" >
-                                           Chat with seller
-                                            </a></button>
+                                <a href="user/addtocart?id=${detail.productID}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Add to cart</a> 
 
+                                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                    <a href="Chat?friendId=${detail.sellerID}" style="color: white">Chat</a>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,7 +201,7 @@
 
                                                 <div class="size-207">
                                                     <div class="flex-w flex-sb-m p-b-17">
-                                                        
+
 
                                                         <span class="fs-18 cl11">
                                                             <%
@@ -222,7 +223,8 @@
                                             <% }
                                             %>
                                             <!-- Review -->
-                                            <form class="w-full">
+                                            <form class="w-full" method="post" action="detail">
+                                                <input type="hidden" name="pid" value="${detail.productID}">
                                                 <h5 class="mtext-108 cl2 p-b-7">
                                                     Add a feedback
                                                 </h5>
@@ -267,6 +269,7 @@
                                                     Submit
                                                 </button>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -360,9 +363,9 @@
                 });
             </script>
             <script type="text/javascript">
-                
+
                 var a = document.getElementById("pPrice").innerHTML;
-                a = a.replace('.','');
+                a = a.replace('.', '');
                 a = a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{2})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1,").trim();
                 document.getElementById("pPrice").innerHTML = "₫" + a;
             </script>

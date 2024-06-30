@@ -7,6 +7,7 @@ package controller;
 
 import DBContext.OrderDAO;
 import DBContext.ProductDAO;
+import DBContext.ShipDAO;
 import DBContext.UserDAO;
 import entity.Order;
 import entity.Users;
@@ -64,15 +65,21 @@ public class DeliverConfirm extends HttpServlet {
         UserDAO udao = new UserDAO();
         ProductDAO pdao = new ProductDAO();
         OrderDAO odao = new OrderDAO();
+        ShipDAO sdao = new ShipDAO();
         Users u = (Users) ss.getAttribute("user");
         try {
-
             int oid = Integer.parseInt(request.getParameter("oid"));
             ArrayList<Order> list = odao.getOrderPackaging();
             boolean checkExist = odao.CheckOrderExist(oid, list);
-            if(checkExist){
+            if (checkExist) {
+                odao.updateOrderStatus(oid, "3");
+                sdao.confirmJob(oid, "Take");
+                response.sendRedirect("DeliveryDashboard");
+            } else {
+                response.sendRedirect("errorPage.jsp");
             }
         } catch (Exception e) {
+            response.sendRedirect("errorPage.jsp");
         }
     }
 
