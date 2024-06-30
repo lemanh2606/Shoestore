@@ -41,9 +41,7 @@
                     <li>
                         <a href="ManagerBlog">Manager Blog <i class="bi bi-bootstrap float-end"></i></a>
                     </li>
-                    <li>
-                        <a href="ManagerAccount">Manager Account<i class="bi bi-person float-end"></i></a>
-                    </li>
+                    
                 </ul>
 
                 <ul class="list-unstyled CTAs">

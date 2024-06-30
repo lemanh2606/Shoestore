@@ -96,7 +96,7 @@
                                                                 </c:if>   
                                                             </c:forEach>
                                                             <td><a href="DeliveryDetail?oid=${o.orderID}" class="btn btn-sm btn-primary">See details</a></td>  
-                                                            <td><a href="DeliverConfirm?oid=${o.orderID}" class="btn btn-sm btn-success">Take</a>
+                                                            <td><a href="DeliverConfirm?oid=${o.orderID}" class="btn btn-sm btn-success">Take</a>                                                         
                                                         </tr>
 
                                                     </c:forEach>

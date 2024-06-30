@@ -331,4 +331,15 @@ public class OrderDAO extends DBcontext{
         }
         return null;
     }
+     public void updateOrderStatus(int orderID, String status) {
+        String query = "UPDATE Orders SET Status = ? WHERE ID = ?";
+        try (
+            PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, status);
+            ps.setInt(2, orderID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
