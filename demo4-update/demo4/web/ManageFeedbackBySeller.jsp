@@ -168,7 +168,10 @@
                                                         ${item.product.productName}
                                                     </td>
                                                     <td><a href="ViewFeedback?id=${item.id}">Detail</a></td>
-                                                    <td><a href="ReplyFeedback?FeedbackID=${item.id}" class="reply"><i class="material-icons" data-toggle="tooltip" title="Reply">&#xe15e;</i></a></td>
+                                                    <td>
+                                                        <a href="DeleteFeedback?FeedbackID=${item.id}" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xe15e;</i></a>
+                                                        <a href="ReplyFeedback?FeedbackID=${item.id}" class="reply"><i class="material-icons" data-toggle="tooltip" title="Reply">&#xe15e;</i></a>
+                                                    </td>
                                                 </tr>
 
                                             </c:forEach>

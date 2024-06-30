@@ -33,6 +33,7 @@
         <url-pattern>/seller/*</url-pattern>
         <url-pattern>/ManageFeedbackBySeller</url-pattern>
         <url-pattern>/ReplyFeedback</url-pattern>
+        <url-pattern>/DeleteFeedback</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>UserFilter</filter-name>
@@ -324,6 +325,10 @@
         <servlet-name>Marketing_EditSale</servlet-name>
         <servlet-class>controller.Marketing_EditSale</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteFeedback</servlet-name>
+        <servlet-class>controller.DeleteFeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -582,6 +587,10 @@
     <servlet-mapping>
         <servlet-name>Marketing_EditSale</servlet-name>
         <url-pattern>/mkt/editsale</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFeedback</servlet-name>
+        <url-pattern>/DeleteFeedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
