@@ -6,6 +6,70 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manh Le</title>
+        <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .modal-dialog {
+            margin-top: 50px;
+        }
+
+        .modal-content {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
         <!--Boostrap-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link
@@ -28,8 +92,9 @@
         <!--ICON-->
         <link rel="shortcut icon" href="resources/favicon.ico" type="image/x-icon">
     </head>
-<body>
-    <header>
+    <body>
+
+        <header>
             <div class="row m-0 p-0">
                 <span id="promo" class="d-lg-block d-none">
                     <marquee style="width: 100%" behavior="scroll" direction="left"><i>Get 10% SALE by using special discount code "CHEERSLUV"</i></marquee>
@@ -71,44 +136,51 @@
                 </div>
             </nav>
         </header>
-    <div class="container mt-5">
-        <h2>Add New Account</h2>
-        <form action="addAccount" method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+
+        <div class="container mt-5">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <h2>  Add New Account</h2>
+                    <form action="addAccount" method="post">
+                        <div class="form-group">
+                            <label for="username">  Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">  Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">  Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roleID">  Role</label>
+                            <select class="form-control" id="roleID" name="roleID">
+                                <option value="1">Admin</option>
+                                <option value="2">Seller</option>
+                                <option value="3">Customer</option>
+                                <option value="4">Marketing</option>
+                                <option value="5">Shipper</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="statusID">  Status</label>
+                            <select class="form-control" id="statusID" name="statusID">
+                                <option value="1">Active</option>
+                                <option value="2">Locked</option>
+                                <option value="3">Gmail Login</option>
+                                <option value="4">Unverified</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">  Add Account</button>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="roleID">Role</label>
-                <select class="form-control" id="roleID" name="roleID">
-                    <option value="1">Admin</option>
-                    <option value="2">Seller</option>
-                    <option value="3">Customer</option>
-                    <option value="4">Marketing</option>
-                    <option value="5">Shipper</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="statusID">Status</label>
-                <select class="form-control" id="statusID" name="statusID">
-                    <option value="1">Active</option>
-                    <option value="2">Locked</option>
-                    <option value="3">Gmail Login</option>
-                    <option value="4">Unverified</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Account</button>
-        </form>
-    </div>
-                        <footer class="text-white text-center text-lg-start" style="background-color: #23242a;" id="part-1">
+        </div>
+
+
+        <footer class="text-white text-center text-lg-start" style="background-color: #23242a;" id="part-1">
             <!-- Section: Social media -->
             <section
                 class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
@@ -154,7 +226,7 @@
                             <!-- Content -->
                             <h5 class="text-uppercase mb-4"><i class="fas fa-tshirt"></i>&nbsp;About Manh Le</h5>
                             <p>
-                                Our purpose at Shope is to empower people to lead bold and full lives. 
+                                Our purpose at Manh Le is to empower people to lead bold and full lives. 
                             </p>
 
                             <p>
@@ -244,6 +316,6 @@
             </div>
             <!-- Copyright -->
         </footer>
-</body>
+    </body>
 </html>
 
