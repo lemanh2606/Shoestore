@@ -82,7 +82,29 @@ public class AddProductControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String pname = request.getParameter("pname");
+        String Description = request.getParameter("Description");
+        String OriginalPrice = request.getParameter("OriginalPrice");
+        String SellPrice = request.getParameter("SellPrice");
+        String SalePercent = request.getParameter("SalePercent");
+        String Amount = request.getParameter("Amount");
+        String sttID = request.getParameter("sttID");
+        String brandID = request.getParameter("brandID");
+        String height = request.getParameter("height");
+        String width = request.getParameter("width");
+        String weight = request.getParameter("weight");
+        String pCategory = request.getParameter("Category");
+        String ProductImgURL = request.getParameter("ProductImgURL");
+        HttpSession session = request.getSession();
+        //get user tren session ve 
+        // ep kieu vì session.getAttribute trả về string
+        Users u = (Users) session.getAttribute("user");
+        int sid = u.getUserID();
+        
+        ProductDAO pdao = new ProductDAO();
+        pdao.AddProduct(pname, Description, OriginalPrice, SellPrice, SalePercent, pCategory, sid, Amount, sttID, brandID, height, width, weight);
+        pdao.AddProductImg(pname, ProductImgURL);
+        request.getRequestDispatcher("ManagerProduct").forward(request, response);
     }
 
     /**

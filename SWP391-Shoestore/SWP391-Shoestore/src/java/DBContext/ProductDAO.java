@@ -262,6 +262,10 @@ public class ProductDAO extends DBcontext{
          PreparedStatement   ps = connection.prepareStatement(query);
             ps.setString(1, pid);
             ps.setString(2, pid);
+            ps.setString(3, pid);
+            ps.setString(4, pid);
+            ps.setString(5, pid);
+            ps.setString(6, pid);
             ps.executeUpdate();
 
         } catch (SQLException e) {

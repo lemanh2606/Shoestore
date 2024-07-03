@@ -33,9 +33,15 @@ public class AddToCartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        CartDAO cdao=new CartDAO();
+        CartDAO cdao = new CartDAO();
         Users user = (Users) session.getAttribute("user");
-        cdao.addtoCart(user.getUserID(), Integer.parseInt(request.getParameter("id")));
+        
+        // Get product ID and quantity from request parameters
+        int productId = Integer.parseInt(request.getParameter("id"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        
+        cdao.addToCart(user.getUserID(), productId, quantity);
+        
         response.sendRedirect(request.getHeader("referer"));
     }
 

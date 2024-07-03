@@ -114,25 +114,38 @@ public class CartDAO extends DBcontext{
         
         return;
     }
-    public void addtoCart(int id,int productId) {
+    public void addToCart(int userId, int productId, int quantity) {
+        // Your existing code to get a connection to the database
+
         try {
-         String   query = "Update dbo.Cart Set Amount = Amount+1 Where UserID = ? And ProductID = ?";
-           
-         PreparedStatement   ps = connection.prepareStatement(query);
-            ps.setInt(1, id);
-            ps.setInt(2, productId);
-            long Updatedline = ps.executeUpdate();
-            if (Updatedline == 0){
-                query = "INSERT INTO dbo.Cart VALUES( ? , ? , 1 )";           
-                ps = connection.prepareStatement(query);
-                ps.setInt(1, id);
-                ps.setInt(2, productId);
-                ps.executeUpdate();
+            // Check if the product is already in the cart
+            String queryCheck = "SELECT Amount FROM Cart WHERE UserID = ? AND ProductID = ?";
+            PreparedStatement psCheck = connection.prepareStatement(queryCheck);
+            psCheck.setInt(1, userId);
+            psCheck.setInt(2, productId);
+            ResultSet rsCheck = psCheck.executeQuery();
+
+            if (rsCheck.next()) {
+                // If product is already in the cart, update the quantity
+                int existingQuantity = rsCheck.getInt("Amount");
+                String queryUpdate = "UPDATE Cart SET Amount = ? WHERE UserID = ? AND ProductID = ?";
+                PreparedStatement psUpdate = connection.prepareStatement(queryUpdate);
+                psUpdate.setInt(1, existingQuantity + quantity);
+                psUpdate.setInt(2, userId);
+                psUpdate.setInt(3, productId);
+                psUpdate.executeUpdate();
+            } else {
+                // If product is not in the cart, insert a new record
+                String queryInsert = "INSERT INTO Cart (UserID, ProductID, Amount) VALUES (?, ?, ?)";
+                PreparedStatement psInsert = connection.prepareStatement(queryInsert);
+                psInsert.setInt(1, userId);
+                psInsert.setInt(2, productId);
+                psInsert.setInt(3, quantity);
+                psInsert.executeUpdate();
             }
+
         } catch (SQLException e) {
-            Logger.getLogger(CartDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-      
-        return;
+            e.printStackTrace();
+        } 
     }
 }

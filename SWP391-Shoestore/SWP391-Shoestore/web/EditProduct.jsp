@@ -103,7 +103,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <input type="submit" class="btn btn-success" value="Edit">
+                                <input type="button" class="btn btn-success" value="Edit" onclick="if(validateForm(event)) { this.closest('form').submit(); }">
                                 <button type="button" class="btn btn-light"><a href="ManagerProduct">Back</a></button>
                             </div>
                         </form>
@@ -115,5 +115,6 @@
 
 
         <script src="js/manager.js" type="text/javascript"></script>
+        <script src="js/editproduct.js" type="text/javascript"></script>
     </body>
 </html>

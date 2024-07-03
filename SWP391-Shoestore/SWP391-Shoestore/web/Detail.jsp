@@ -157,13 +157,18 @@
                                 </div>	
                             </div>
                             <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-
-                                <a href="user/addtocart?id=${detail.productID}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Add to cart</a> 
-
+                                <a href="#" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" onclick="addToCart(${detail.productID})">Add to cart</a>
                                 <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
                                     <a href="Chat?friendId=${detail.sellerID}" style="color: white">Chat</a>
                                 </button>
                             </div>
+
+                            <script type="text/javascript">
+                                function addToCart(productId) {
+                                    var quantity = document.querySelector('input[name="num-product"]').value;
+                                    window.location.href = 'user/addtocart?id=' + productId + '&quantity=' + quantity;
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -312,56 +317,57 @@
             <!--===============================================================================================-->
             <script src="css/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
             <script>
-                $('.gallery-lb').each(function () { // the containers for all your galleries
-                    $(this).magnificPopup({
-                        delegate: 'a', // the selector for gallery item
-                        type: 'image',
-                        gallery: {
-                            enabled: true
-                        },
-                        mainClass: 'mfp-fade'
-                    });
-                });
+    $('.gallery-lb').each(function () { // the containers for all your galleries
+        $(this).magnificPopup({
+            delegate: 'a', // the selector for gallery item
+            type: 'image',
+            gallery: {
+                enabled: true
+            },
+            mainClass: 'mfp-fade'
+        });
+    });
             </script>
             <!--===============================================================================================-->
             <!--            <script src="vendor/isotope/isotope.pkgd.min.js"></script>-->
             <!--===============================================================================================-->
             <script src="css/vendor/sweetalert/sweetalert.min.js"></script>
             <script>
-                $('.js-addwish-b2').on('click', function (e) {
-                    e.preventDefault();
-                });
+    $('.js-addwish-b2').on('click', function (e) {
+        e.preventDefault();
+    });
 
-                $('.js-addwish-b2').each(function () {
-                    var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-                    $(this).on('click', function () {
-                        swal(nameProduct, "is added to wishlist !", "success");
+    $('.js-addwish-b2').each(function () {
+        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to wishlist !", "success");
 
-                        $(this).addClass('js-addedwish-b2');
-                        $(this).off('click');
-                    });
-                });
+            $(this).addClass('js-addedwish-b2');
+            $(this).off('click');
+        });
+    });
 
-                $('.js-addwish-detail').each(function () {
-                    var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+    $('.js-addwish-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-                    $(this).on('click', function () {
-                        swal(nameProduct, "is added to wishlist !", "success");
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to wishlist !", "success");
 
-                        $(this).addClass('js-addedwish-detail');
-                        $(this).off('click');
-                    });
-                });
+            $(this).addClass('js-addedwish-detail');
+            $(this).off('click');
+        });
+    });
 
-                /*---------------------------------------------*/
+    /*---------------------------------------------*/
 
-                $('.js-addcart-detail').each(function () {
-                    var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-                    $(this).on('click', function () {
-                        swal(nameProduct, "is added to cart !", "success");
-                    });
-                });
+    $('.js-addcart-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "is added to cart !", "success");
+        });
+    });
             </script>
+
             <script type="text/javascript">
 
                 var a = document.getElementById("pPrice").innerHTML;

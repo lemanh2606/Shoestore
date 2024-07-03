@@ -146,7 +146,9 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                            <input type="submit" class="btn btn-success" value="Add">
+                                                            <input type="submit" class="btn btn-success" value="Add" onclick="if (validateForm(event)) {
+                                                                        this.closest('form').submit();
+                                                                    }">
                                                         </div>
                                                     </form>
                                                 </div>
@@ -176,5 +178,6 @@
                                         </div>
                                     </a>
                                     <script src="js/managerproduct.js" type="text/javascript"></script>
+                                    <script src="js/addproduct.js" type="text/javascript"></script>
                                     </body>
                                     </html>
