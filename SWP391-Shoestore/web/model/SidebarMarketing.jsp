@@ -11,7 +11,7 @@
     </div>
 
     <ul class="list-unstyled components">
-        <p>Marketing</p>
+        <p>MARKETING DASHBOARD</p>
         <li>
             <a href="${pageContext.request.contextPath}/home">Home
                 <i class="bi bi-house float-end"></i>
