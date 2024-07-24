@@ -20,10 +20,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-/**
- *
- * @author Bach Ngoc Minh Chau HE153019
- */
 public class AdminFilter implements Filter {
     
     private static final boolean debug = true;

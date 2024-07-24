@@ -14,10 +14,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.Factory;
 
-/**
- *
- * @author LAMDTHE153097
- */
 public class UserDAO extends DBcontext {
 
     public List<Users> getAllUsers() {
