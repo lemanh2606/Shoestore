@@ -107,7 +107,7 @@
                                         <div class="wrap-pic-w pos-relative">
                                             <img src="css/resources/img/products/<%=images.get(i)%>" alt="IMG-PRODUCT">
 
-                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="">
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="css/resources/img/products/<%=images.get(0)%>">
                                                 <i class="fa fa-expand"></i>
                                             </a>
                                         </div>
@@ -369,11 +369,10 @@
             </script>
 
             <script type="text/javascript">
-
                 var a = document.getElementById("pPrice").innerHTML;
-                a = a.replace('.', '');
-                <!--a = a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{2})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1,").trim(); -->
-                document.getElementById("pPrice").innerHTML = "₫" + a;
+                a = a.replace(/,/g, ''); // Remove existing commas if any
+                var formattedPrice = Number(a).toLocaleString('en-US'); // Format the number with commas
+                document.getElementById("pPrice").innerHTML = "₫" + formattedPrice;
             </script>
             <!--===============================================================================================-->
             <!--            <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
