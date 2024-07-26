@@ -372,7 +372,7 @@
 
                 var a = document.getElementById("pPrice").innerHTML;
                 a = a.replace('.', '');
-                a = a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{2})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1,").trim();
+                <!--a = a.replace(new RegExp("^(\\d{" + (a.length % 3 ? a.length % 3 : 0) + "})(\\d{2})", "g"), "$1 $2").replace(/(\d{3})+?/gi, "$1,").trim(); -->
                 document.getElementById("pPrice").innerHTML = "₫" + a;
             </script>
             <!--===============================================================================================-->
