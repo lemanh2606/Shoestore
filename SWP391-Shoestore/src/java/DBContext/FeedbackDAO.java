@@ -234,7 +234,6 @@ public class FeedbackDAO extends DBcontext {
     public void addFeedback(Feedback feedback) {
         String query = "INSERT INTO Feedback (ProductID, Star, FeedbackDetail) VALUES (?, ?, ?);";
         try {
-
             PreparedStatement ps = connection.prepareStatement(query);
 
             //Set data to the "?"
@@ -267,7 +266,6 @@ public class FeedbackDAO extends DBcontext {
                 );
                 return f;
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -298,7 +296,6 @@ public class FeedbackDAO extends DBcontext {
     public void delete(int id) {
         String query = "DELETE FROM dbo.Feedback_Replies WHERE [FeedbackID] IN (SELECT [ID] FROM [dbo].[Feedback])\n"
                 + "Delete FROM Feedback WHERE ID = ?";
-
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, id);
