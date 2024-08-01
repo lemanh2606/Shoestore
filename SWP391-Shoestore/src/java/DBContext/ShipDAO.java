@@ -18,67 +18,60 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-public class ShipDAO extends DBcontext{
-
+public class ShipDAO extends DBcontext {
 
     public ArrayList<Ship> getShip() {
         ArrayList<Ship> list = new ArrayList<>();
         try {
-         String   query = "SELECT * from dbo.Ship";
-    
-         PreparedStatement   ps = connection.prepareStatement(query);
-        ResultSet    rs = ps.executeQuery();
+            String query = "SELECT * from dbo.Ship";
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Ship(rs.getInt("id"), rs.getString("CityName"), rs.getInt("ShipPrice")));
             }
         } catch (SQLException e) {
             Logger.getLogger(ShipDAO.class.getName()).log(Level.SEVERE, null, e);
-        } 
+        }
         return list;
     }
 
     public Ship getShip(int id) {
         Ship ship = null;
         try {
-           String query = "SELECT * from dbo.Ship where id=?";
-      
-           PreparedStatement ps = connection.prepareStatement(query);
+            String query = "SELECT * from dbo.Ship where id=?";
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, id);
-         ResultSet   rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 ship = new Ship(rs.getInt("id"), rs.getString("CityName"), rs.getInt("ShipPrice"));
             }
         } catch (SQLException e) {
             Logger.getLogger(ShipDAO.class.getName()).log(Level.SEVERE, null, e);
-        } 
+        }
         return ship;
     }
 
     public ShipInfo getShipInfoByOdID(int orderID) {
         String query = " select * from ShipInfo where Order_ID = ? ";
         try {
-
-           
-          PreparedStatement  ps = connection.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, orderID);
-           ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new ShipInfo(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7));
+                return new ShipInfo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7));
             }
         } catch (Exception e) {
+
         }
-       
         return null;
     }
 
     public ArrayList<ShipInfo> getShipInfoByOrder(ArrayList<Order> listOrder) {
         String query = "";
         ArrayList<ShipInfo> list = new ArrayList<>();
-
         try {
-         
-
             for (int i = 0; i < listOrder.size(); i++) {
                 if (i == 0) {
                     query += "select * from ShipInfo where Order_ID = " + listOrder.get(i).getId();
@@ -86,8 +79,8 @@ public class ShipDAO extends DBcontext{
                     query += " or Order_ID = " + listOrder.get(i).getId();
                 }
             }
-         PreparedStatement   ps = connection.prepareStatement(query);
-          ResultSet  rs = ps.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ShipInfo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7)));
             }
@@ -99,26 +92,22 @@ public class ShipDAO extends DBcontext{
     public void addJob(int jid, int userID) {
         String query = "insert into Delivery values ( ? , ? , 2 )";
         try {
-           
-           PreparedStatement ps = connection.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, jid);
             ps.setInt(2, userID);
             ps.executeQuery();
         } catch (Exception e) {
         }
-
     }
 
     public ArrayList<Delivery> getDeliveryJobByShipper(int userID) {
         ArrayList<Delivery> list = new ArrayList<>();
         String query = "select * from Delivery \n"
                 + "where UserID =  ? ";
-
         try {
-          
-           PreparedStatement ps = connection.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, userID);
-         ResultSet   rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Delivery(
                         rs.getInt(2),
@@ -128,7 +117,6 @@ public class ShipDAO extends DBcontext{
             }
         } catch (Exception e) {
         }
-
         return list;
     }
 
@@ -138,7 +126,6 @@ public class ShipDAO extends DBcontext{
             if (jid == delivery.getShipInfo()) {
                 flag = true;
             }
-
         }
         return flag;
     }
@@ -153,10 +140,8 @@ public class ShipDAO extends DBcontext{
                 query = "update Delivery set Status = 3 where ID =  ? ";
                 break;
         }
-
         try {
-          
-          PreparedStatement  ps = connection.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, jid);
             ps.executeUpdate();
         } catch (Exception e) {
@@ -168,10 +153,9 @@ public class ShipDAO extends DBcontext{
                 + "                where UserID = ? ";
         ArrayList<Delivery> list = new ArrayList<>();
         try {
-         
-         PreparedStatement   ps = connection.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, userID);
-           ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Delivery(
                         rs.getInt(2),
@@ -196,16 +180,14 @@ public class ShipDAO extends DBcontext{
             }
         }
         try {
-          
-         PreparedStatement   ps = connection.prepareStatement(query);
-         ResultSet   rs = ps.executeQuery();
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ShipInfo(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7)));
             }
         } catch (Exception e) {
         }
         return list;
-
     }
-
 }
