@@ -1,29 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBContext;
 
 import entity.Feedback;
-
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+public class FeedbackDAO extends DBcontext {
 
-public class FeedbackDAO extends DBcontext{
-
-   
-    
     public ArrayList<Feedback> getAllFeedbacks() {
-       String query = "SELECT * FROM Feedback";
+        String query = "SELECT * FROM Feedback";
         try {
             ArrayList<Feedback> lsFeedback = new ArrayList<>();
-          
-         PreparedStatement   ps = connection.prepareStatement(query);
-        ResultSet    rs = ps.executeQuery();
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Feedback f = new Feedback(
                         rs.getInt("ID"),
@@ -52,10 +44,10 @@ public class FeedbackDAO extends DBcontext{
         String query = "SELECT * FROM Feedback WHERE ID = ?";
         try {
             Feedback f;
-          
-       PreparedStatement     ps = connection.prepareStatement(query);           
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, id);
-           ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 f = new Feedback(
                         rs.getInt("ID"),
@@ -84,10 +76,10 @@ public class FeedbackDAO extends DBcontext{
         String query = "SELECT * FROM Feedback WHERE ProductID = ?";
         try {
             ArrayList<Feedback> lsFeedback = new ArrayList<>();
-           
-          PreparedStatement  ps = connection.prepareStatement(query);           
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, productId);
-          ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Feedback f = new Feedback(
                         rs.getInt("ID"),
@@ -116,10 +108,10 @@ public class FeedbackDAO extends DBcontext{
         String query = "SELECT * FROM Feedback WHERE UserID = ?";
         try {
             ArrayList<Feedback> lsFeedback = new ArrayList<>();
-           
-         PreparedStatement   ps = connection.prepareStatement(query);      
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, userId);
-          ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Feedback f = new Feedback(
                         rs.getInt("ID"),
@@ -150,11 +142,11 @@ public class FeedbackDAO extends DBcontext{
                 + " AND ProductID = ?";
         try {
             ArrayList<Feedback> lsFeedback = new ArrayList<>();
-           
-         PreparedStatement   ps = connection.prepareStatement(query);           
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, userId);
             ps.setInt(2, productId);
-         ResultSet   rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Feedback f = new Feedback(
                         rs.getInt("ID"),
@@ -183,11 +175,11 @@ public class FeedbackDAO extends DBcontext{
         String query = "SELECT * FROM Feedback WHERE OrderID = ? ";
         try {
             ArrayList<Feedback> lsFeedback = new ArrayList<>();
-        
-          PreparedStatement  ps = connection.prepareStatement(query);         
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, orderId);
 
-          ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Feedback f = new Feedback(
                         rs.getInt("ID"),
@@ -205,15 +197,16 @@ public class FeedbackDAO extends DBcontext{
         }
         return null;
     }
-public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
+
+    public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
         String query = "SELECT * FROM (dbo.Feedback f JOIN dbo.Product p ON  p.ProductID=f.ProductID) JOIN dbo.Users u ON  u.UserID=p.SellerID WHERE f.UserID=?";
         try {
             ArrayList<Feedback> lsFeedback = new ArrayList<>();
-           
-      PreparedStatement      ps = connection.prepareStatement(query);         
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, sellerId);
 
-          ResultSet  rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Feedback f = new Feedback(
                         rs.getInt("ID"),
@@ -231,6 +224,7 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
         }
         return null;
     }
+
     /**
      * Add a feedback to the database
      *
@@ -238,30 +232,30 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
      * @return true if add successful, else false
      */
     public void addFeedback(Feedback feedback) {
-        String query = "INSERT INTO Feedback (ProductID, Star, FeedbackDetail) VALUES (?, ?, ?);";   
+        String query = "INSERT INTO Feedback (ProductID, Star, FeedbackDetail) VALUES (?, ?, ?);";
         try {
-          
-         PreparedStatement   ps = connection.prepareStatement(query);
-           
+
+            PreparedStatement ps = connection.prepareStatement(query);
+
             //Set data to the "?"
-              ps.setInt(1, feedback.getProductID());
+            ps.setInt(1, feedback.getProductID());
             ps.setInt(2, feedback.getStar());
             ps.setString(3, feedback.getFeedbackDetail());
             ps.executeUpdate();
         } catch (Exception e) {
 
         }
-       
     }
-    public Feedback getFeedbackByOrderIdAndProductId(int orderId, int ProductId){
+
+    public Feedback getFeedbackByOrderIdAndProductId(int orderId, int ProductId) {
         String query = "select * from Feedback where OrderID =? and ProductID =?";
         try {
             Feedback f;
-   
-          PreparedStatement  ps = connection.prepareStatement(query);           
+
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, orderId);
             ps.setInt(1, ProductId);
-         ResultSet   rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 f = new Feedback(
                         rs.getInt("ID"),
@@ -280,6 +274,18 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
         return null;
     }
 
+    public void deleteFeedback(String id) {
+        String query = "delete from Feedback where ID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, id);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+
+        }
+    }
+
     /**
      * Get total count of all feedback
      *
@@ -288,7 +294,7 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
     public int countTotalFeedback() {
         return getAllFeedbacks().size();
     }
-    
+
     public void delete(int id) {
         String query = "DELETE FROM dbo.Feedback_Replies WHERE [FeedbackID] IN (SELECT [ID] FROM [dbo].[Feedback])\n"
                 + "Delete FROM Feedback WHERE ID = ?";
@@ -300,5 +306,4 @@ public ArrayList<Feedback> getFeedbacksBySellerId(int sellerId) {
         } catch (SQLException e) {
         }
     }
-
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBContext;
 
 import entity.Post;
@@ -12,47 +7,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-public class PostDAO extends DBcontext{
-
-  
+public class PostDAO extends DBcontext {
 
     public ArrayList<Post> getAllPost() {
         ArrayList<Post> postList = new ArrayList<>();
         try {
 
-            String query = "select * from Post ";
-           
-          PreparedStatement  ps = connection.prepareStatement(query);
-           ResultSet rs = ps.executeQuery();
+            String query = "select * from Post";
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
-                postList.add(new Post(rs.getInt("ID"), rs.getString("Description"), rs.getInt("UserID"), rs.getString("date"), rs.getInt("CategoryID"), rs.getString("PostImgURL")));
+                postList.add(new Post(
+                        rs.getInt("ID"),
+                        rs.getString("Description"),
+                        rs.getInt("UserID"),
+                        rs.getString("date"),
+                        rs.getInt("CategoryID"),
+                        rs.getString("PostImgURL")));
             }
         } catch (SQLException e) {
         }
-        
+
         return postList;
     }
-   public void deletePost(String postid) {
+
+    public void deletePost(String postid) {
         String query = "delete from Post where ID = ?";
-
         try {
-           
-         PreparedStatement   ps = connection.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, postid);
-            
-            ps.executeUpdate();
 
+            ps.executeUpdate();
         } catch (Exception e) {
         }
     }
-     public Post getPostByID(String postid) {
-        String query = "select *from Post where ID  = ?";
+
+    public Post getPostByID(String postid) {
+        String query = "select *from Post where ID = ?";
         try {
-           
-           PreparedStatement ps = connection.prepareStatement(query);
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, postid);
-           ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 return (new Post(
                         rs.getInt(1),
@@ -61,17 +58,16 @@ public class PostDAO extends DBcontext{
                         rs.getString(4),
                         rs.getInt(5),
                         rs.getString(6)));
-
             }
         } catch (SQLException e) {
         }
-       
         return null;
     }
-     public void update(String Description , String date, int CategoryID, String PostImgURL, int id) {
-       String   query = "update Post set Description= ? , date= ?, CategoryID= ?, PostImgURL = ?  where ID =?";
-        try { 
-          PreparedStatement  ps = connection.prepareStatement(query);
+
+    public void update(String Description, String date, int CategoryID, String PostImgURL, int id) {
+        String query = "update Post set Description= ? , date= ?, CategoryID= ?, PostImgURL = ?  where ID =?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, Description);
             ps.setString(2, date);
             ps.setInt(3, CategoryID);
@@ -81,16 +77,17 @@ public class PostDAO extends DBcontext{
         } catch (SQLException e) {
         }
     }
-     public void AddPost(String Description ,int UserID, String date, int CategoryID, String PostImgURL) {
-       String   query = " INSERT INTO Post VALUES (?,?,?,?,?)";
-        try { 
-         PreparedStatement   ps = connection.prepareStatement(query);
+
+    public void AddPost(String Description, int UserID, String date, int CategoryID, String PostImgURL) {
+        String query = " INSERT INTO Post VALUES (?,?,?,?,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, Description);
             ps.setInt(2, UserID);
             ps.setString(3, date);
             ps.setInt(4, CategoryID);
             ps.setString(5, PostImgURL);
-            
+
             ps.executeUpdate();
         } catch (SQLException e) {
         }

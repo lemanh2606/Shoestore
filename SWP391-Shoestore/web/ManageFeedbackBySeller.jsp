@@ -41,7 +41,8 @@
         <style>
             td{
                 padding-right:3em;
-                padding:10px; border: 1px solid;
+                padding:10px;
+                border: 1px solid;
             }
             .row{
                 margin-bottom: 40px;
@@ -62,9 +63,13 @@
                 text-align: center;
             }
 
-            #feedback tr:nth-child(even){background-color: #f2f2f2;}
+            #feedback tr:nth-child(even){
+                background-color: #f2f2f2;
+            }
 
-            #feedback tr:hover {background-color: #ddd;}
+            #feedback tr:hover {
+                background-color: #ddd;
+            }
 
             #feedback th {
                 padding-top: 12px;
@@ -136,55 +141,54 @@
                         </div>
                     </div>
                     <div class="row-fluid">
-                  
-                            <div class="table-wrapper">
-                                <center>
-                                    <table class="table table-striped table-hover" id="feedback" style="margin-left:3em; border: 1px solid; width: 100%;">
-                                        <thead >
-                                            <tr>
-                                                <th style="text-align: center;">FeedbackID</th>
-                                                <th style="text-align: center;">User</th>
-                                                <th style="text-align: center;">Star</th>
-                                                <th style="text-align: center;"></th>
-                                                <th style="text-align: center;">Product</th>
-                                                <th style="text-align: center;">Detail</th>
-                                                <th style="text-align: center;">Action</th>
+
+                        <div class="table-wrapper">
+                            <center>
+                                <table class="table table-striped table-hover" id="feedback" style="margin-left:3em; border: 1px solid; width: 100%;">
+                                    <thead >
+                                        <tr>
+                                            <th style="text-align: center;">FeedbackID</th>
+                                            <th style="text-align: center;">User</th>
+                                            <th style="text-align: center;">Star</th>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;">Product</th>
+                                            <th style="text-align: center;">Detail</th>
+                                            <th style="text-align: center;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="item" items="${requestScope.lsFeedback}" varStatus="x">
+                                            <tr style="padding:2px; border: 1px solid">
+                                                <td>${item.id}</td>
+                                                <td>${item.user.userName}</td>
+                                                <td>
+                                                    <c:forEach begin="1" end="${item.star}">
+                                                        <span><i class="fa fa-star checked" style="font-size: 10px"></i></span>  
+                                                        </c:forEach>
+                                                </td>
+                                                <td>
+                                                    <img style="width: 100px" src="./resources/img/products/${item.product.url}">
+                                                </td>
+                                                <td>
+                                                    ${item.product.productName}
+                                                </td>
+                                                <td><a href="ViewFeedback?id=${item.id}">Detail</a></td>
+                                                <td><a href="DeleteFeedback?FeedbackID=${item.id}" class="delete" onclick="return confirm('Are you sure you want to delete this feedback?');"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xe872;</i></a>
+                                                    <a href="ReplyFeedback?FeedbackID=${item.id}" class="reply"><i class="material-icons" data-toggle="tooltip" title="Reply">&#xe15e;</i></a></td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach var="item" items="${requestScope.lsFeedback}" varStatus="x">
-                                                <tr style="padding:2px; border: 1px solid">
-                                                    <td>${item.id}</td>
-                                                    <td>${item.user.userName}</td>
-                                                    <td>
-                                                        <c:forEach begin="1" end="${item.star}">
-                                                            <span><i class="fa fa-star checked" style="font-size: 10px"></i></span>  
-                                                            </c:forEach>
-                                                    </td>
-                                                    <td>
-                                                        <img style="width: 100px" src="./resources/img/products/${item.product.url}">
-                                                    </td>
-                                                    <td>
-                                                        ${item.product.productName}
-                                                    </td>
-                                                    <td><a href="ViewFeedback?id=${item.id}">Detail</a></td>
-                                                    <td><a href="DeleteFeedback?FeedbackID=${item.id}" class="delete" onclick="return confirm('Are you sure you want to delete this feedback?');"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xe872;</i></a>
-                                                        <a href="ReplyFeedback?FeedbackID=${item.id}" class="reply"><i class="material-icons" data-toggle="tooltip" title="Reply">&#xe15e;</i></a></td>
-                                                    
-                                                </tr>
 
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </center>
-                            </div>   
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </center>
+                        </div>   
 
-                        </div>
                     </div>
-
                 </div>
-            </div>      
-        
+
+            </div>
+        </div>      
+
 
         <%@include file="model/footer.jsp" %>
         <!-- BOOTSTRAP5-->
